@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datetime Pickers with Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Include Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+  <div class="p-8 bg-white rounded shadow">
+    <!-- Date Picker -->
+    <div class="mb-4">
+      <label for="datePicker" class="block text-gray-700 text-sm font-bold mb-2">Date Picker:</label>
+      <input type="text" id="datePicker" class="flatpickr flatpickr-input block w-full px-4 py-3 rounded focus:outline-none focus:shadow-outline" placeholder="Select Date">
+    </div>
+
+    <!-- Time Picker -->
+    <div class="mb-4">
+      <label for="timePicker" class="block text-gray-700 text-sm font-bold mb-2">Time Picker:</label>
+      <input type="text" id="timePicker" class="flatpickr flatpickr-input block w-full px-4 py-3 rounded focus:outline-none focus:shadow-outline" placeholder="Select Time">
+    </div>
+
+    <!-- Datetime Picker -->
+    <div class="mb-4">
+      <label for="datetimePicker" class="block text-gray-700 text-sm font-bold mb-2">Datetime Picker:</label>
+      <input type="text" id="datetimePicker" class="flatpickr flatpickr-input block w-full px-4 py-3 rounded focus:outline-none focus:shadow-outline" placeholder="Select Datetime">
+    </div>
+  </div>
+
+  <!-- Include Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // Initialize Flatpickr for Date, Time, and Datetime fields
+    flatpickr("#datePicker", {
+      dateFormat: "Y-m-d",
+    });
+
+    flatpickr("#timePicker", {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+    });
+
+    flatpickr("#datetimePicker", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+    });
+  </script>
+
+</body>
+</html>

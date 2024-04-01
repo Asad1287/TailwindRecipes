@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion with Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js" defer></script>
+</head>
+<body class="bg-gray-100 p-8">
+
+<div x-data="{ openTab: 1 }">
+  <div class="max-w-md mx-auto">
+    <!-- Accordion header -->
+    <div @click="openTab = openTab === 1 ? null : 1" class="cursor-pointer px-5 py-3 bg-teal-500 text-white rounded-t-md flex justify-between items-center">
+      <h2 class="text-lg font-semibold">What are webhooks?</h2>
+      <span x-show="openTab !== 1" class="text-lg">&gt;</span>
+      <span x-show="openTab === 1" class="text-lg">&or;</span>
+    </div>
+    
+    <!-- Accordion content -->
+    <div x-show="openTab === 1" class="px-5 py-3 bg-teal-100 border border-t-0 rounded-b-md">
+      <p>Webhooks allow you to gather real time data on key interactions that happen with your Slick Text account. Simply provide us with a url where you'd like the data to be sent, choose which events you'd like to be informed of, and click save.</p>
+    </div>
+
+    <!-- Repeated for other items -->
+    <div @click="openTab = openTab === 2 ? null : 2" class="cursor-pointer px-5 py-3 bg-teal-500 text-white flex justify-between items-center mt-4">
+      <h2 class="text-lg font-semibold">Where can I find my Textword ID?</h2>
+      <span x-show="openTab !== 2" class="text-lg">&gt;</span>
+      <span x-show="openTab === 2" class="text-lg">&or;</span>
+    </div>
+    <div x-show="openTab === 2" class="px-5 py-3 bg-teal-100 border border-t-0 rounded-b-md">
+      <p>Your Textword ID is located in your account settings under the 'API' tab.</p>
+    </div>
+
+    <div @click="openTab = openTab === 3 ? null : 3" class="cursor-pointer px-5 py-3 bg-teal-500 text-white flex justify-between items-center mt-4">
+      <h2 class="text-lg font-semibold">Where is your API documentation?</h2>
+      <span x-show="openTab !== 3" class="text-lg">&gt;</span>
+      <span x-show="openTab === 3" class="text-lg">&or;</span>
+    </div>
+    <div x-show="openTab === 3" class="px-5 py-3 bg-teal-100 border border-t-0 rounded-b-md">
+      <p>Our API documentation can be found at the 'Developers' section on our website.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

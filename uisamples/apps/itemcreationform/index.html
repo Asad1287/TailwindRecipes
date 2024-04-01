@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom styling for input fields to mimic IBM Carbon Design */
+    .input-field {
+      border: 1px solid #d4d4d4; /* Carbon light-gray border */
+      padding: .75rem;
+      border-radius: 0; /* Carbon style has no border-radius */
+      width: 50%;
+    }
+    .input-field-large {
+        border: 1px solid #d4d4d4; /* Carbon light-gray border */
+      padding: .75rem;
+      border-radius: 0; /* Carbon style has no border-radius */
+      width: 100%;
+
+    }
+    .input-field:focus {
+      outline: 2px solid #0f62fe; /* Carbon blue focus outline */
+      outline-offset: 0;
+    }
+    .input-icon-container {
+      position: relative;
+    }
+    .input-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d4d4d4;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-6">
+    <div class="bg-white shadow-md rounded-lg">
+      <div class="p-6">
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- PO Section -->
+            <div class="mb-4 md:mb-0">
+              <label for="po" class="block text-sm font-medium text-gray-700">* ITEM:</label>
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <input type="text" id="po" name="po" class="input-field w-full" placeholder="1098">
+                <div class="absolute inset-y-0 right-0 flex items-center pointer-events-none">
+                  <span class="text-gray-500 sm:text-sm">
+                    <!-- Replace with actual icon -->
+                    &#9881;
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Revision Section -->
+            <div class="mb-4 md:mb-0">
+              <label for="revision" class="block text-sm font-medium text-gray-700">Revision:</label>
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <input type="text" id="revision" name="revision" class="input-field w-full" placeholder="0">
+                <div class="absolute inset-y-0 right-0 flex items-center pointer-events-none">
+                  <span class="text-gray-500 sm:text-sm">
+                    <!-- Replace with actual icon -->
+                    &#9881;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Site Section -->
+            <div class="mb-4 md:mb-0">
+              <label for="site" class="block text-sm font-medium text-gray-700">Site:</label>
+              <select id="site" name="site" class="input-field w-full">
+                <option value="BEDFORD">BEDFORD</option>
+                <!-- Add other options here -->
+              </select>
+            </div>
+
+            <!-- Status Section -->
+            <div class="mb-4 md:mb-0">
+              <label for="status" class="block text-sm font-medium text-gray-700">Status:</label>
+              <select id="status" name="status" class="input-field w-full">
+                <option value="WAPPR">WAPPR</option>
+                <!-- Add other options here -->
+              </select>
+            </div>
+          </div>
+          
+          <!-- Submit button -->
+          <div class="mt-6">
+            <button type="submit" class="px-6 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

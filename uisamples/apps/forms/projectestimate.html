@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project estimate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <form id="estimateForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h2 class="text-2xl font-bold mb-6">Project Title</h2>
+        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-4" placeholder="Project Title">
+        <div class="flex mb-4">
+          <label class="block text-gray-700 font-bold w-1/4" for="defaultRate">Default Rate:</label>
+          <div class="w-1/4">
+            <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700" 
+                   id="defaultRate" type="number" min="0" value="20">
+          </div>
+          <span class="text-xl font-bold w-1/2 text-right">&euro;100</span>  
+        </div>
+      
+        <table class="table-auto w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-2">Description of Task</th>
+              <th class="px-4 py-2">Hours</th>
+              <th class="px-4 py-2">Rate</th>
+              <th class="px-4 py-2 text-right">Estimated Fee</th>
+              <th class="px-4 py-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border px-4 py-2"><input class="task-desc w-full" type="text" value="Project Brief"></td>
+              <td class="border px-4 py-2"><input class="task-hours w-full text-right" type="number" min="0" value="2"></td>
+              <td class="border px-4 py-2"><input class="task-rate w-full text-right" type="number" min="0" value="20"></td>
+              <td class="border px-4 py-2 text-right task-fee">40</td>
+              <td class="border px-4 py-2 text-center">
+                <button class="delete-row bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" 
+                        type="button">X</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2"><input class="task-desc w-full" type="text" value="Information Architecture"></td>
+              <td class="border px-4 py-2"><input class="task-hours w-full text-right" type="number" min="0" value="3"></td>
+              <td class="border px-4 py-2"><input class="task-rate w-full text-right" type="number" min="0" value="20"></td>
+              <td class="border px-4 py-2 text-right task-fee">60</td>
+              <td class="border px-4 py-2 text-center">
+                <button class="delete-row bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" 
+                        type="button">X</button>
+              </td>
+            </tr>
+            <!-- More task rows... -->
+          </tbody>
+        </table>
+      
+        <div class="flex items-center justify-between mt-6">
+          <button id="addTask" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                  type="button">+ Add Task</button>
+          <button id="resetForm" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" 
+                  type="button">Reset Form</button>        
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                  type="submit">View Estimate</button>
+        </div>
+        <div id="results" class="mt-4"></div>
+
+      </form>
+      
+      <script>
+        $(function() {
+          function calculateFees() {
+            var defaultRate = parseFloat($('#defaultRate').val());
+            
+            $('.task-fee').each(function() {
+              var hours = parseFloat($(this).siblings().find('.task-hours').val());
+              var rate = parseFloat($(this).siblings().find('.task-rate').val());
+              var fee = hours * rate;
+              $(this).text(fee);
+            });
+            
+            var totalFee = 0;
+            $('.task-fee').each(function() {
+              totalFee += parseFloat($(this).text());  
+            });
+            
+            $('span').text('€' + totalFee);
+          }
+        
+          function addNewRow() {
+            var newRow = `
+              <tr>
+                <td class="border px-4 py-2"><input class="task-desc w-full" type="text" value=""></td>
+                <td class="border px-4 py-2"><input class="task-hours w-full text-right" type="number" min="0" value="0"></td>
+                <td class="border px-4 py-2"><input class="task-rate w-full text-right" type="number" min="0" value="0"></td>
+                <td class="border px-4 py-2 text-right task-fee">0</td>
+                <td class="border px-4 py-2 text-center">
+                  <button class="delete-row bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" 
+                          type="button">X</button>
+                </td>
+              </tr>
+            `;
+            $('.table-auto tbody').append(newRow);
+          }
+        
+          $('#estimateForm').on('input', 'input', calculateFees);
+          
+          $('#addTask').click(addNewRow);
+          
+          $('#estimateForm').on('click', '.delete-row', function() {
+            $(this).closest('tr').remove();
+            calculateFees();
+          });
+          
+          $('#resetForm').click(function() {
+            $('#estimateForm')[0].reset();
+            $('.table-auto tbody').empty();
+            addNewRow();
+            calculateFees();
+          });
+          
+          addNewRow();
+          calculateFees();
+        });
+
+        document.querySelector('#estimateForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var totalFee = parseFloat($('span').text().replace('€', ''));
+          var finalEstimate = `The project final estimate is €${totalFee}`;
+          $('#results').text(finalEstimate);
+        });
+        </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Wizard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Signup Your Account</h2>
+        <form id="signup-form" class="space-y-6">
+            <!-- Step 1 -->
+            <div id="step-1" class="step">
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="email">Email</label>
+                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter email">
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="username">User Name</label>
+                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter user name">
+                </div>
+                <div>
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="password">Password</label>
+                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Enter password">
+                </div>
+            </div>
+
+            <!-- Step 2 -->  
+            <div id="step-2" class="step hidden">
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="description">Description</label>
+                    <textarea class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="description" rows="3" placeholder="Enter description"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-sm font-bold text-gray-700" for="avatar">Avatar</label>
+                    <input class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="avatar" type="file">
+                </div>
+            </div>
+
+            <!-- Step 3 (Placeholder) -->
+            <div id="step-3" class="step hidden">
+                <p>Step 3 Placeholder</p>  
+            </div>
+
+            <!-- Step 4 (Placeholder) -->
+            <div id="step-4" class="step hidden">
+                <p>Step 4 Placeholder</p>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="flex justify-between">
+                <button type="button" id="prev-btn" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline hidden">Previous</button>
+                <button type="button" id="next-btn" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline">Next</button>
+                <button type="submit" id="submit-btn" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline hidden">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var currentStep = 1;
+            var totalSteps = 4;
+
+            function showStep(step) {
+                $('.step').addClass('hidden');
+                $('#step-' + step).removeClass('hidden');
+            }
+
+            function updateButtons() {
+                $('#prev-btn').toggleClass('hidden', currentStep === 1);
+                $('#next-btn').toggleClass('hidden', currentStep === totalSteps);
+                $('#submit-btn').toggleClass('hidden', currentStep !== totalSteps);
+            }
+
+            $('#next-btn').click(function() {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                    updateButtons();
+                }
+            });
+
+            $('#prev-btn').click(function() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    showStep(currentStep);
+                    updateButtons();  
+                }
+            });
+
+            $('#signup-form').submit(function(e) {
+                e.preventDefault();
+                // Handle form submission
+            });
+        });
+    </script>
+</body>
+</html>

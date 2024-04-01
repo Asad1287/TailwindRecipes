@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toolbars and Toolboxes</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container mx-auto mt-8">
+    <h1 class="text-2xl font-bold mb-4">Toolbars and Toolboxes</h1>
+    <div class="flex">
+      <div class="mr-4">
+        <div class="bg-gray-200 p-2 rounded">
+          <div class="vertical-toolbar">
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-file mr-2"></i>File</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-edit mr-2"></i>Edit</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-cog mr-2"></i>Settings</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-search mr-2"></i>Search</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-info-circle mr-2"></i>Info</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-trash mr-2"></i>Delete</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-share mr-2"></i>Share</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-download mr-2"></i>Download</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-print mr-2"></i>Print</button>
+            <button class="block w-full py-2 px-4 text-left hover:bg-gray-300"><i class="fas fa-question-circle mr-2"></i>Help</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1">
+        <div class="bg-gray-200 p-2 rounded mb-4">
+          <div class="horizontal-toolbar">
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-file"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-edit"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-cog"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-search"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-info-circle"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-trash"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-share"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-download"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-print"></i></button>
+            <button class="inline-block py-2 px-4 hover:bg-gray-300"><i class="fas fa-question-circle"></i></button>
+          </div>
+        </div>
+        <div class="bg-gray-100 p-4 rounded">
+          <h2 class="text-xl font-bold mb-2">Content Area</h2>
+          <p>This is the main content area of the webpage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('.vertical-toolbar button, .horizontal-toolbar button').click(function() {
+        alert('Clicked: ' + $(this).text());
+      });
+    });
+  </script>
+</body>
+</html>

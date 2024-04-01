@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Page with Rating</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .rating-star {
+            cursor: pointer;
+        }
+        .rated {
+            color: #f59e0b; /* Tailwind's yellow-500 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-xl mx-auto">
+        <div class="text-center mb-4">
+            <h1 class="text-3xl font-bold">Leave a Comment</h1>
+        </div>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <div class="rating" data-rate="0">
+                    <span class="rating-star" data-value="1">&#9733;</span>
+                    <span class="rating-star" data-value="2">&#9733;</span>
+                    <span class="rating-star" data-value="3">&#9733;</span>
+                    <span class="rating-star" data-value="4">&#9733;</span>
+                    <span class="rating-star" data-value="5">&#9733;</span>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label for="comment" class="block text-gray-700 text-sm font-bold mb-2">Your Comment:</label>
+                <textarea id="comment" name="comment" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            </div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Submit Comment
+                </button>
+            </div>
+            <div id="comments-section" class="mt-8">
+                <h2 class="text-xl font-semibold mb-2">Comments:</h2>
+                <!-- Comments will be appended here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.rating-star').mouseenter(function() {
+                const ratingValue = $(this).data('value');
+                $(this).prevAll().addBack().addClass('rated');
+                $(this).nextAll().removeClass('rated');
+            });
+
+            $('.rating').mouseleave(function() {
+                const currentRating = $(this).data('rate');
+                if (currentRating > 0) {
+                    $(this).children().each(function() {
+                        if ($(this).data('value') <= currentRating) {
+                            $(this).addClass('rated');
+                        } else {
+                            $(this).removeClass('rated');
+                        }
+                    });
+                } else {
+                    $(this).children().removeClass('rated');
+                }
+            });
+
+            $('.rating-star').click(function() {
+                const ratingValue = $(this).data('value');
+                $('.rating').data('rate', ratingValue);
+            });
+
+            $('button').click(function() {
+                const commentText = $('#comment').val();
+                if (commentText) {
+                    $('#comments-section').append('<p class="border-b border-gray-200 mb-2 pb-2">' + commentText + '</p>');
+                    $('#comment').val('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

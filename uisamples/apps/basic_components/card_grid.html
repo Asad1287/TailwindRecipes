@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspections</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .bx--card {
+      background-color: #f4f4f4;
+      border-top: 3px solid #0f62fe;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-4">Inspections</h1>
+    
+    <nav class="mb-4">
+      <ul class="flex space-x-4">
+        <li><a href="#" class="text-blue-500 hover:text-blue-700">Pending</a></li>
+        <li><a href="#" class="text-blue-500 hover:text-blue-700">In Progress</a></li>
+        <li><a href="#" class="text-blue-500 hover:text-blue-700">Completed</a></li>
+        <li><a href="#" class="text-blue-500 hover:text-blue-700">All</a></li>
+      </ul>
+    </nav>
+    
+    <div class="flex justify-between mb-4">
+      <div class="flex">
+        <input type="text" placeholder="Search" class="border border-gray-300 rounded-l px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button class="bg-blue-500 text-white rounded-r px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <i class="fas fa-plus mr-2"></i>
+        Unscheduled Inspection
+      </button>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bx--card flex flex-col">
+        <h3 class="text-xl font-bold mb-2">Sampling Meter Inspection</h3>
+        <p class="mb-2">1028</p>
+        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>2140 Smart Meter Bulk Received Asse...</p>
+        <p class="text-gray-500">Created Date: Wed Nov 01 2017</p>
+        <p>Due Date: Unspecified</p>
+      </div>
+      
+      <div class="bx--card flex flex-col">
+        <h3 class="text-xl font-bold mb-2">Sampling Meter Inspection</h3>
+        <p class="mb-2">1025</p>
+        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>NEEDHAM Needham Site</p>
+        <p class="text-gray-500">Created Date: Wed Nov 01 2017</p>
+        <p>Due Date: Unspecified</p>
+      </div>
+      
+      <div class="bx--card flex flex-col">
+        <h3 class="text-xl font-bold mb-2">Portable Ladder Inspection</h3>
+        <p class="mb-2">1011</p>
+        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>NEEDHAM Needham Site</p>
+        <p class="text-gray-500">Created Date: Tue Oct 31 2017</p>
+        <p>Due Date: Thu Nov 30 2017</p>
+      </div>
+      
+      <div class="bx--card flex flex-col">
+        <h3 class="text-xl font-bold mb-2">Monthly Fire System Inspection 2</h3>
+        <p class="mb-2">1005</p>
+        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>NEEDHAM Needham Site</p>
+        <p class="text-gray-500">Created Date: Tue Oct 31 2017</p>
+        <p>Due Date: Tue Oct 31 2017</p>
+      </div>
+      
+      <div class="bx--card flex flex-col">
+        <h3 class="text-xl font-bold mb-2">Daily Maintenance and Inspection Log for Work Equipment</h3>
+        <p class="mb-2">1022</p>
+        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>12200 Overhead Crane #1</p>
+        <p class="text-gray-500">Created Date: Tue Oct 24 2017</p>
+        <p>Due Date: Unspecified</p>
+      </div>
+      
+      <div class="bx--card flex flex-col">
+        <h3 class="text-xl font-bold mb-2">Daily Maintenance and Inspection Log for Work Equipment</h3>
+        <p class="mb-2">1026</p>
+        <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>BR460 Burner, Gas Fired- For Boiler</p>
+        <p class="text-gray-500">Created Date: Sun Oct 22 2017</p>
+        <p>Due Date: Unspecified</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Add your jQuery code here if needed
+  </script>
+</body>
+</html>

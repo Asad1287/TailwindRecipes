@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Responsive Navbar</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            /* BEGIN: Added CSS */
+            .nav-link {
+                transition: all 0.3s ease-in-out;
+            }
+
+            .nav-link:hover {
+                transform: scale(1.1);
+            }
+            /* END: Added CSS */
+        </style>
+    </head>
+
+    <body class="bg-gray-100">
+        <nav class="flex flex-row justify-between items-end bg-blue-300 text-300 shadow-lg p-4">
+            <div class="flex space-x-7 items-end">
+                <!-- Modified: added items-end class -->
+                <div>
+                    <a href="#" class="flex items pt-2 hover:text-500 nav-link">Home</a>
+                </div>
+                <div>
+                    <a href="#" class="flex items pt-2 hover:bg-blue-200 nav-link">About Us</a>
+                </div>
+                <div>
+                    <a href="#" class="flex items pt-2 hover:bg-blue-200 nav-link">Work</a>
+                </div>
+                <div>
+                    <a href="#" class="flex items pt-3 hover:bg-blue-200 nav-link">Contact</a>
+                </div>
+                <div>
+                    <a href="#" class="flex items pt-3 hover:bg-blue-200 nav-link">WAKECAMP</a>
+                </div>
+                <div>
+                    <a href="#" class="flex items pt-3 hover:bg-blue-200 nav-link">BLOG & NEWS</a>
+                </div>
+            </div>
+
+            <div name="logo" class="flex space-x-7">
+                <div>
+                    <img
+                        src="https://i.pinimg.com/originals/cc/7a/d3/cc7ad3d3ba4e80853304bee2dc3015da.png"
+                        alt="wakecamp logo"
+                        class="flex items p-2 h-10 w-13"
+                    />
+                </div>
+            </div>
+        </nav>
+    </body>
+</html>

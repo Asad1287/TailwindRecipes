@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Tailwind CSS Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <title>Input Examples</title>
+    </head>
+
+    <body class="bg-gray-100 py-8">
+        <div class="mx-auto bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-6">Input Examples</h2>
+            <div class="grid grid-cols-3 gap-5">
+                <div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="basic-input">Basic Input</label>
+                        <input type="text" id="basic-input"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="label-input">Input with Label</label>
+                        <input type="text" id="label-input"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="placeholder-input">Input with
+                            Placeholder</label>
+                        <input type="text" id="placeholder-input" placeholder="Placeholder"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="value-input">Input with Value</label>
+                        <input type="text" id="value-input" value="Input value"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="readonly-input">Readonly Plain Text
+                            Input</label>
+                        <input type="text" id="readonly-input" value="Readonly input" readonly
+                            class="w-full px-3 py-2 text-gray-700 bg-gray-100 rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="icon-right-input">Input with Icon
+                            Right</label>
+                        <div class="relative">
+                            <input type="text" id="icon-right-input" value="example@gmail.com"
+                                class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="date-input">Input Date</label>
+                        <input type="date" id="date-input"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="time-input">Input Time</label>
+                        <input type="time" id="time-input"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="color-input">Color Picker</label>
+                        <input type="color" id="color-input" value="#1E88E5"
+                            class="w-full h-10 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="text-area">Example Textarea</label>
+                        <textarea id="text-area" rows="4"
+                            class="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Must be 8-20 characters long"></textarea>
+                    </div>
+                    <div class="w-64">
+                        <label for="city" class="block text-sm font-medium text-gray-700">Choose a city</label>
+                        <select id="city" name="city" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                          <optgroup label="Sweden">
+                            <option value="stockholm">Stockholm</option>
+                            <option value="gothenburg">Gothenburg</option>
+                          </optgroup>
+                          <optgroup label="USA">
+                            <option value="new-york">New York</option>
+                            <option value="san-francisco">San Francisco</option>
+                          </optgroup>
+                          <!-- Add more groups and options as needed -->
+                        </select>
+                      </div>
+                      
+                    
+
+                      <div id="choices-container" class="mt-4">
+                        <!-- Tags will be added here -->
+                      </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="rounded-input">Rounded Input</label>
+                        <input type="text" id="rounded-input" placeholder="Enter your name"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Floating Input</label>
+                        <div class="relative">
+                            <input type="text" id="floating-input" placeholder=" "
+                                class="block w-full px-3 py-3 text-gray-700 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 peer">
+                            <label for="floating-input"
+                                class="absolute top-3 left-3 text-gray-700 pointer-events-none transition-all duration-200 ease-in-out origin-left transform scale-75 -translate-y-1/2 opacity-75 peer-placeholder-shown:opacity-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:opacity-75 peer-focus:scale-75 peer-focus:-translate-y-1/2">Floating
+                                input</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="styled-border-input">Input Border
+                            Style</label>
+                        <input type="text" id="styled-border-input" placeholder="Enter your name"
+                            class="w-full px-3 py-2 border-2 border-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2" for="password-input">Input Password</label>
+                        <input type="password" id="password-input"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Get the dropdown element and the container for displaying choices
+            const citySelect = document.getElementById('city');
+            const choicesContainer = document.getElementById('choices-container');
+          
+            // Function to create a removable tag
+            function createTag(label) {
+              const div = document.createElement('div');
+              div.setAttribute('class', 'flex items-center justify-center bg-blue-500 text-white px-2 py-1 rounded mr-2 mb-2');
+          
+              const span = document.createElement('span');
+              span.innerHTML = label;
+          
+              const button = document.createElement('button');
+              button.setAttribute('type', 'button');
+              button.setAttribute('class', 'ml-2 text-white text-sm rounded-full focus:outline-none');
+              button.innerHTML = '&times;';
+          
+              // Append elements
+              div.appendChild(span);
+              div.appendChild(button);
+          
+              // Event listener for removing the tag
+              button.addEventListener('click', () => {
+                div.remove();
+              });
+          
+              return div;
+            }
+          
+            // Event listener for the dropdown change
+            citySelect.addEventListener('change', function() {
+              const selectedCity = citySelect.options[citySelect.selectedIndex].text;
+              const tag = createTag(selectedCity);
+              choicesContainer.appendChild(tag);
+              citySelect.value = ''; // Reset the select after adding a tag
+            });
+          </script>
+          
+    </body>
+
+    </html>
+

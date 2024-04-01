@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <title>Task List</title>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-4">Task List</h1>
+    <div class="mb-4">
+      <input type="text" id="taskInput" class="border border-gray-300 rounded-md px-4 py-2 w-full mb-2" placeholder="Enter task">
+      <div class="flex space-x-4">
+        <input type="datetime-local" id="startTimeInput" class="border border-gray-300 rounded-md px-4 py-2 w-full mb-2">
+        <input type="datetime-local" id="endTimeInput" class="border border-gray-300 rounded-md px-4 py-2 w-full mb-2">
+      </div>
+      <input type="text" id="durationInput" class="border border-gray-300 rounded-md px-4 py-2 w-full mb-2" placeholder="Duration">
+      <button id="addTaskBtn" class="bg-blue-500 text-white rounded-md px-4 py-2">Add Task</button>
+    </div>
+    <div class="mb-4">
+      <input type="text" id="searchInput" class="border border-gray-300 rounded-md px-4 py-2 w-full" placeholder="Search tasks">
+    </div>
+    <table id="taskTable" class="w-full bg-white shadow-md rounded-lg">
+      <thead>
+        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+          <th class="py-3 px-6 text-left">Task</th>
+          <th class="py-3 px-6 text-left">Start Time</th>
+          <th class="py-3 px-6 text-left">End Time</th>
+          <th class="py-3 px-6 text-left">Duration</th>
+        </tr>
+      </thead>
+      <tbody id="taskTableBody" class="text-gray-600 text-sm font-light">
+        <!-- Table rows will be dynamically populated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Get elements
+    const taskInput = document.getElementById('taskInput');
+    const startTimeInput = document.getElementById('startTimeInput');
+    const endTimeInput = document.getElementById('endTimeInput');
+    const durationInput = document.getElementById('durationInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const searchInput = document.getElementById('searchInput');
+    const taskTableBody = document.getElementById('taskTableBody');
+
+    // Load tasks from localStorage
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    // Function to render tasks in the table
+    function renderTasks() {
+      taskTableBody.innerHTML = '';
+
+      tasks.forEach((task, index) => {
+        const row = `
+          <tr class="border-b border-gray-200 hover:bg-gray-100">
+            <td class="py-3 px-6 text-left whitespace-nowrap">${task.name}</td>
+            <td class="py-3 px-6 text-left">${task.startTime}</td>
+            <td class="py-3 px-6 text-left">${task.endTime}</td>
+            <td class="py-3 px-6 text-left">${task.duration}</td>
+          </tr>
+        `;
+        taskTableBody.innerHTML += row;
+      });
+
+      // Initialize DataTable
+      $('#taskTable').DataTable();
+    }
+
+    // Function to add a new task
+    function addTask() {
+      const taskName = taskInput.value.trim();
+      const startTime = startTimeInput.value;
+      const endTime = endTimeInput.value;
+      const duration = durationInput.value.trim();
+
+      if (taskName !== '' && startTime !== '' && endTime !== '') {
+        const task = {
+          name: taskName,
+          startTime: startTime,
+          endTime: endTime,
+          duration: duration
+        };
+        tasks.push(task);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        taskInput.value = '';
+        startTimeInput.value = '';
+        endTimeInput.value = '';
+        durationInput.value = '';
+        renderTasks();
+      }
+    }
+
+    // Event listener for add task button
+    addTaskBtn.addEventListener('click', addTask);
+
+    // Event listener for task input enter key press
+    taskInput.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+        addTask();
+      }
+    });
+
+    // Event listener for search input
+    searchInput.addEventListener('keyup', (event) => {
+      const searchValue = event.target.value.toLowerCase();
+      const filteredTasks = tasks.filter(task =>
+        task.name.toLowerCase().includes(searchValue)
+      );
+      renderFilteredTasks(filteredTasks);
+    });
+
+    // Function to render filtered tasks
+    function renderFilteredTasks(filteredTasks) {
+      taskTableBody.innerHTML = '';
+
+      filteredTasks.forEach((task, index) => {
+        const row = `
+          <tr class="border-b border-gray-200 hover:bg-gray-100">
+            <td class="py-3 px-6 text-left whitespace-nowrap">${task.name}</td>
+            <td class="py-3 px-6 text-left">${task.startTime}</td>
+            <td class="py-3 px-6 text-left">${task.endTime}</td>
+            <td class="py-3 px-6 text-left">${task.duration}</td>
+          </tr>
+        `;
+        taskTableBody.innerHTML += row;
+      });
+
+      // Destroy existing DataTable and reinitialize
+      $('#taskTable').DataTable().destroy();
+      $('#taskTable').DataTable();
+    }
+
+    // Initial render of tasks
+    renderTasks();
+  </script>
+</body>
+</html>

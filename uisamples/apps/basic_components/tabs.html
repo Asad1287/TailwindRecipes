@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Tabs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js" defer></script>
+</head>
+<body>
+
+<div x-data="{ tab: 'home' }" class="p-5">
+    <ul class="flex border-b">
+        <li class="mr-1" :class="{ '-mb-px': tab === 'home' }">
+            <a :class="tab === 'home' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" class="bg-white inline-block py-2 px-4" href="#" @click="tab = 'home'">Home</a>
+        </li>
+        <li class="mr-1" :class="{ '-mb-px': tab === 'product' }">
+            <a :class="tab === 'product' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" class="bg-white inline-block py-2 px-4" href="#" @click="tab = 'product'">Product</a>
+        </li>
+        <li class="mr-1" :class="{ '-mb-px': tab === 'messages' }">
+            <a :class="tab === 'messages' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" class="bg-white inline-block py-2 px-4" href="#" @click="tab = 'messages'">Messages</a>
+        </li>
+        <li class="mr-1" :class="{ '-mb-px': tab === 'settings' }">
+            <a :class="tab === 'settings' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" class="bg-white inline-block py-2 px-4" href="#" @click="tab = 'settings'">Settings</a>
+        </li>
+    </ul>
+    <div class="w-full pt-4">
+        <div x-show="tab === 'home'">
+            <h2 class="font-bold text-lg mb-3">Graphic Design</h2>
+            <p class="text-gray-600">They all have something to say beyond the words on the page. They can come across as casual or neutral, exotic or graphic...</p>
+        </div>
+        <div x-show="tab === 'product'">
+            <h2 class="font-bold text-lg mb-3">Product</h2>
+            <p class="text-gray-600">You've probably heard that opposites attract. The same is true for fonts. Don't be afraid to combine font styles that are different but complementary...</p>
+        </div>
+        <div x-show="tab === 'messages'">
+            <h2 class="font-bold text-lg mb-3">Messages</h2>
+            <p class="text-gray-600">This could be your messaging area where conversations are displayed...</p>
+        </div>
+        <div x-show="tab === 'settings'">
+            <h2 class="font-bold text-lg mb-3">Settings</h2>
+            <p class="text-gray-600">Adjust your settings from this tab. All user preferences and system configurations can be managed here...</p>
+        </div>
+    </div>
+</div>
+
+<div class="flex">
+    <div class="w-1/4">
+      <div class="flex flex-col">
+        <a href="#" class="px-4 py-2 text-white bg-blue-500 hover:bg-blue-600">
+          <i class="fas fa-home mr-2"></i>
+          Home
+        </a>
+        <a href="#" class="px-4 py-2 text-gray-800 hover:bg-gray-100">
+          <i class="fas fa-user mr-2"></i>
+          Profile
+        </a>
+        <a href="#" class="px-4 py-2 text-gray-800 hover:bg-gray-100">
+          <i class="fas fa-envelope mr-2"></i>
+          Messages
+        </a>
+      </div>
+    </div>
+    <div class="w-3/4 p-4">
+      <p>Experiment and play around with the fonts that you already have in the software you're working with reputable font websites. commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus.</p>
+      <div class="flex mt-4">
+        <div class="w-1/2 pr-2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwo9kqtPFYJMHGOLrhhS2yCjmEZbUGGtngHA&usqp=CAU" alt="Image 1" class="w-full h-auto">
+        </div>
+        <div class="w-1/2 pl-2">
+          <img src="https://images.squarespace-cdn.com/content/v1/6372d1a6a3ab272b4203bc15/1684081913539-2XO57TVJY9931B9VU6J8/image-asset.jpeg" alt="Image 2" class="w-full h-auto">
+        </div>
+      </div>
+      <p class="mt-4">Always want to make sure that your fonts work well together and try to limit the number of fonts you use to three or less. Experiment and play around with the fonts that you already have in the software you're working with reputable font websites.</p>
+    </div>
+  </div>
+
+</body>
+</html>

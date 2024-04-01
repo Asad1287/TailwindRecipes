@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Range Sliders with Tailwind CSS and Value Display</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+    <!-- Default Range Slider -->
+    <div id="default-range-slider" class="slider mb-4"></div>
+    <div id="default-range-value" class="text-center mb-8">Value: <span>50</span></div>
+
+    <!-- Slider with Pips -->
+    <div id="pips-range-slider" class="slider mb-4"></div>
+    <div id="pips-range-value" class="text-center mb-8">Values: <span>25</span> - <span>75</span></div>
+
+    <!-- Slider with Overlapping Tooltips -->
+    <div id="overlapping-tooltips-slider" class="slider mb-4"></div>
+    <div id="overlapping-tooltips-value" class="text-center mb-8">Values: <span>20</span> - <span>80</span></div>
+
+    <!-- nouislider JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
+    <script>
+        // Initialize Default Range Slider
+        const defaultRangeSlider = document.getElementById('default-range-slider');
+        const defaultRangeValueElement = document.getElementById('default-range-value').querySelector('span');
+        noUiSlider.create(defaultRangeSlider, {
+            start: [50],
+            connect: [true, false],
+            range: {
+                'min': [0],
+                'max': [100]
+            }
+        });
+
+        defaultRangeSlider.noUiSlider.on('update', function (values) {
+            defaultRangeValueElement.textContent = values[0];
+        });
+
+        // Initialize Slider with Pips
+        const pipsRangeSlider = document.getElementById('pips-range-slider');
+        const pipsRangeValues = document.getElementById('pips-range-value').querySelectorAll('span');
+        noUiSlider.create(pipsRangeSlider, {
+            start: [25, 75],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            },
+            pips: { mode: 'count', values: 5 }
+        });
+
+        pipsRangeSlider.noUiSlider.on('update', function (values) {
+            pipsRangeValues[0].textContent = values[0];
+            pipsRangeValues[1].textContent = values[1];
+        });
+
+        // Initialize Slider with Overlapping Tooltips
+        const overlappingTooltipsSlider = document.getElementById('overlapping-tooltips-slider');
+        const overlappingTooltipsValues = document.getElementById('overlapping-tooltips-value').querySelectorAll('span');
+        noUiSlider.create(overlappingTooltipsSlider, {
+            start: [20, 80],
+            connect: [false, true, false],
+            tooltips: true,
+            range: {
+                'min': [0],
+                'max': [100]
+            }
+        });
+
+        overlappingTooltipsSlider.noUiSlider.on('update', function (values) {
+            overlappingTooltipsValues[0].textContent = parseFloat(values[0]).toFixed(2);
+            overlappingTooltipsValues[1].textContent = parseFloat(values[1]).toFixed(2);
+        });
+    </script>
+
+</body>
+</html>

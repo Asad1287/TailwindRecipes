@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Options</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Quick styles for flip animation */
+        .flip-card {
+            perspective: 1000px;
+            cursor: pointer;
+            
+        }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto px-6 py-12">
+        <!-- Pricing Cards Container -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Single Card -->
+            <div class="flip-card bg-white rounded-lg shadow-lg p-5 flex flex-col items-center">
+                <h2 class="text-2xl font-bold mb-2">ONE SITE</h2>
+                <span class="text-6xl font-bold">$9</span>
+                <span class="text-lg mb-4">/mo</span>
+                <span class="text-sm text-gray-500 mb-4">(Billed annually)</span>
+                <p class="mb-4">One site with advanced hosting included.</p>
+                <button
+                    class="mb-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition ease-in duration-200">Create
+                    Your FREE Site</button>
+                <ul class="text-sm text-gray-700 list-none space-y-2 flex-1">
+                    <li>1 Website</li>
+                    <li>3GB Storage</li>
+                    <li>Domain Hosting</li>
+                    <li>Built-In CMS</li>
+                    <li>Advanced Hosting</li>
+                </ul>
+            </div>
+
+            <!-- Repeat the above block for the other cards, changing the content and styles as needed -->
+
+            <!-- Example of a highlighted card (for most popular or recommended plans) -->
+            <div class="flip-card bg-white rounded-lg shadow-xl p-5 flex flex-col items-center border-4 border-blue-500">
+                <h2 class="text-2xl font-bold mb-2 text-blue-500">TEAM</h2>
+                <span class="text-6xl font-bold">$35</span>
+                <span class="text-lg mb-4">/mo</span>
+                <span class="text-sm text-gray-500 mb-4">(Billed annually)</span>
+                <p class="mb-4">The ideal collaboration studio for professional design teams.</p>
+                <button
+                    class="mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition ease-in duration-200">Create
+                    Your FREE Site</button>
+                <ul class="text-sm text-gray-700 list-none space-y-2 flex-1">
+                    <li>50 Websites</li>
+                    <li>Unlimited Storage</li>
+                    <li>1st Domain Hosting Included</li>
+                    <li>$5/ Domain Hosting + CMS</li>
+                    <li>Advanced Hosting</li>
+                    <li>250 Site Exports</li>
+                    <li>Email & Chat Support</li>
+                    <li>Full White Label</li>
+                </ul>
+                <div
+                    class="py-1 px-3 bg-blue-500 text-white rounded-full text-xs absolute top-0 transform translate-y-[-50%]">
+                    Most Popular</div>
+            </div>
+
+            <div class="flip-card bg-white rounded-lg shadow-xl p-5 flex flex-col items-center border-4 border-blue-500">
+                <h2 class="text-2xl font-bold mb-2 text-blue-500">TEAM</h2>
+                <span class="text-6xl font-bold">$35</span>
+                <span class="text-lg mb-4">/mo</span>
+                <span class="text-sm text-gray-500 mb-4">(Billed annually)</span>
+                <p class="mb-4">The ideal collaboration studio for professional design teams.</p>
+                <button
+                    class="mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition ease-in duration-200">Create
+                    Your FREE Site</button>
+                <ul class="text-sm text-gray-700 list-none space-y-2 flex-1">
+                    <li>50 Websites</li>
+                    <li>Unlimited Storage</li>
+                    <li>1st Domain Hosting Included</li>
+                    <li>$5/ Domain Hosting + CMS</li>
+                    <li>Advanced Hosting</li>
+                    <li>250 Site Exports</li>
+                    <li>Email & Chat Support</li>
+                    <li>Full White Label</li>
+                </ul>
+                <div
+                    class="py-1 px-3 bg-blue-500 text-white rounded-full text-xs absolute top-0 transform translate-y-[-50%]">
+                    Most Popular</div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <script>
+        // If you need to control the flip programmatically using JS, you can add event listeners
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function () {
+                card.classList.toggle('flipped');
+            });
+        });
+
+    document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', function () {
+            card.classList.toggle('flipped');
+        });
+    });
+</script>
+    </script>
+</body>
+
+</html>

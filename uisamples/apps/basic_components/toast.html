@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Notification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js" defer></script>
+</head>
+<body class="bg-gray-100 p-8">
+
+<!-- Toast Notification -->
+<div x-data="{ show: false }" @click.away="show = false" class="relative" aria-live="polite">
+    <!-- Button to trigger toast -->
+    <button @click="show = true" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        Show Toast
+    </button>
+
+    <!-- Toast -->
+    <div x-show.transition.opacity="show" class="fixed bottom-0 right-0 mb-4 mr-4 max-w-xs w-full bg-white shadow-lg rounded-lg pointer-events-auto">
+        <div class="rounded-lg shadow-xs overflow-hidden">
+            <div class="p-4">
+                <div class="flex items-center">
+                    <div class="w-0 flex-1 flex justify-between">
+                        <p class="w-full text-sm leading-5 font-medium text-gray-900">
+                            Hello, world! This is a toast message.
+                        </p>
+                    </div>
+                    <div class="ml-4 flex-shrink-0 flex">
+                        <button @click="show = false" class="inline-flex text-gray-400 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150">
+                            <span class="text-2xl">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

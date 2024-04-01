@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Configurations with Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+<h1 class="text-2xl font-bold mb-5">Flexbox Configurations with Tailwind CSS</h1>
+
+<div class="space-y-10">
+
+    <!-- Flex Direction -->
+    <div>
+        <h2 class="font-semibold mb-3">1. Flex Direction</h2>
+        <div class="flex space-x-2 mb-2">
+            <div class="w-20 h-20 bg-blue-500">1</div>
+            <div class="w-20 h-20 bg-red-500">1</div>
+            <div class="w-20 h-20 bg-green-500">1</div>
+        </div>
+        <!-- Add row-reverse, column, column-reverse examples -->
+    </div>
+
+    <!-- Justify Content -->
+    <div>
+        <h2 class="font-semibold mb-3">2. Justify Content</h2>
+        <div class="flex justify-between w-full mb-2">
+            <div class="w-20 h-20 bg-blue-500"></div>
+            <div class="w-20 h-20 bg-red-500"></div>
+            <div class="w-20 h-20 bg-green-500"></div>
+        </div>
+        <!-- Add flex-start, flex-end, center, space-around, space-evenly examples -->
+    </div>
+
+    <!-- Align Items -->
+    <div>
+        <h2 class="font-semibold mb-3">3. Align Items</h2>
+        <div class="flex items-center h-32 mb-2">
+            <div class="w-20 h-10 bg-blue-500"></div>
+            <div class="w-20 h-20 bg-red-500"></div>
+            <div class="w-20 h-24 bg-green-500"></div>
+        </div>
+       
+    </div>
+
+    <!-- Flex Wrap -->
+    <div>
+        <h2 class="font-semibold mb-3">4. Flex Wrap</h2>
+        <div class="flex flex-wrap mb-2">
+            <div class="w-20 h-20 bg-blue-500"></div>
+            <div class="w-20 h-20 bg-red-500"></div>
+            <div class="w-20 h-20 bg-green-500"></div>
+        </div>
+        <!-- Add flex-nowrap, flex-wrap-reverse examples -->
+        
+        <!--Align content-->
+        <h2 class="font-semibold mb-3">5. Align Content</h2>
+        <div class="flex flex-wrap h-32 mb-2">
+            <div class="w-20 h-20 bg-blue-500"></div>
+            <div class="w-20 h-20 bg-red-500"></div>
+            <div class="w-20 h-20 bg-green-500"></div>
+        </div>
+        <!--Order-->
+
+        <h2 class="font-semibold mb-3">6. Order</h2>
+        <div class="flex mb-2">
+            <div class="w-20 h-20 bg-blue-500 order-3">1</div>
+            <div class="w-20 h-20 bg-red-500 order-2">2</div>
+            <div class="w-20 h-20 bg-green-500 order-1">3</div>
+        
+        </div>
+
+        <!--Flex Grow-->
+        <h2 class="font-semibold mb-3">7. Flex Grow</h2>
+        <div class="flex mb-2">
+            <div class="w-20 h-20 bg-blue-500 flex-grow">1</div>
+            <div class="w-20 h-20 bg-red-500">2</div>
+            <div class="w-20 h-20 bg-green-500">3</div>
+        </div>
+    
+        <!--Flex Shrink-->
+        <h2 class="font-semibold mb-3">8. Flex Shrink</h2>
+        <div class="flex mb-2">
+            <div class="w-20 h-20 bg-blue-500 flex-shrink">1</div>
+            <div class="w-20 h-20 bg-red-500">2</div>
+            <div class="w-20 h-20 bg-green-500">3</div>
+        </div>
+    
+    
+</body>
+</html>

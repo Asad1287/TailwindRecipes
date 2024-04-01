@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Select Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+
+    <div class="flex justify-center">
+        <div class="flex flex-col w-64">
+            <div class="overflow-hidden shadow rounded">
+                <ul id="multi-select-list" class="divide-y divide-gray-200 max-h-60 overflow-auto">
+                    <!-- List options will be added here -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-64 ml-4">
+            <div class="overflow-hidden shadow rounded">
+                <ul id="selected-items" class="divide-y divide-gray-200 max-h-60 overflow-auto">
+                    <!-- Selected items will appear here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // jQuery to handle the multi-select functionality
+        $(document).ready(function() {
+            // List of items
+            var items = ['Apple', 'Banana', 'Blueberry', 'Cherry', 'Coconut', 'Grapefruit'];
+            
+            // Populate the list with items
+            $.each(items, function(index, item) {
+                $('#multi-select-list').append(
+                    $('<li>').addClass('p-2 hover:bg-gray-200 cursor-pointer').text(item)
+                );
+            });
+
+            // Click to move items between lists
+            $(document).on('click', '#multi-select-list li', function() {
+                $(this).appendTo('#selected-items').toggleClass('hover:bg-gray-200 hover:bg-gray-100');
+            });
+
+            $(document).on('click', '#selected-items li', function() {
+                $(this).appendTo('#multi-select-list').toggleClass('hover:bg-gray-100 hover:bg-gray-200');
+            });
+        });
+    </script>
+
+</body>
+</html>

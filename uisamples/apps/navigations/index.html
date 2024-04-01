@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Examples</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+  <style>
+    body {
+      font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="text-white text-2xl font-semibold">Logo</a>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <div class="relative dropdown" x-data="{ open: false }">
+              <button @click="open = !open" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</button>
+              <div x-show="open" @click.away="open = false" class="dropdown-menu absolute z-10 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">iPhone</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">iPad</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mac</a>
+              </div>
+            </div>
+            <div class="relative mega-menu" x-data="{ open: false }">
+              <button @mouseenter="open = true" @mouseleave="open = false" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Accessories</button>
+              <div x-show="open" @mouseleave="open = false" class="absolute z-10 left-0 mt-2 w-full bg-white shadow-lg rounded-md p-6">
+                <div class="grid grid-cols-4 gap-4">
+                  <div>
+                    <h3 class="text-lg font-semibold mb-2">Cases</h3>
+                    <ul class="space-y-1">
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">iPhone Cases</a></li>
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">iPad Cases</a></li>
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">Mac Cases</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-2">Audio</h3>
+                    <ul class="space-y-1">
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">AirPods</a></li>
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">Beats</a></li>
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">Speakers</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold mb-2">Power</h3>
+                    <ul class="space-y-1">
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">Chargers</a></li>
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">Batteries</a></li>
+                      <li><a href="#" class="text-gray-700 hover:text-gray-900">Cables</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <img src="https://example.com/accessories-promo.jpg" alt="Accessories Promo" class="w-full rounded-md">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="px-4 py-6 sm:px-0">
+      <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
+        <div class="p-6">
+          <nav class="flex space-x-4 mb-6">
+            <a href="#" class="px-3 py-2 font-medium text-sm leading-5 rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:bg-gray-100">Profile</a>
+            <a href="#" class="px-3 py-2 font-medium text-sm leading-5 rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:bg-gray-100">Settings</a>
+            <a href="#" class="px-3 py-2 font-medium text-sm leading-5 rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:bg-gray-100">Notifications</a>
+          </nav>
+          <div class="mt-6">
+            <h2 class="text-2xl font-semibold">Content Area</h2>
+            <p class="mt-4">This is the main content area of the webpage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

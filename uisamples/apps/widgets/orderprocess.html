@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Order Placed</title>
+</head>
+<body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+        <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="inline-block p-4 bg-green-500 rounded-full">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold mt-6">Your Order Has Been Placed</h1>
+            <p class="text-gray-600 mt-2">You'll receive a notification once your ads are reviewed.</p>
+            <div class="mt-8">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm text-gray-600">Order placed</div>
+                    <div class="text-sm text-gray-600">In Review</div>
+                    <div class="text-sm text-gray-600">Approval</div>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full mt-2">
+                    <div class="h-full bg-blue-500 rounded-full" style="width: 33.33%;"></div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <button class="px-6 py-3 bg-blue-500 text-white rounded-md mr-4">Create Similar Ad</button>
+                <button class="px-6 py-3 bg-gray-300 text-gray-700 rounded-md">Continue</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

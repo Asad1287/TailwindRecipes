@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Following Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       
+        .bg-black-transition {
+            transition: background-color 0.5s ease;
+        }
+        .maintext {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white bg-black-transition">
+
+    <div class="container mx-auto p-4 flex flex-col items-center justify-center h-screen">
+        <h1 class="maintext mb-4 text-xl font-semibold">Follow Me on Twitter</h1>
+        <button id="follow-btn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+            Follow
+        </button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#follow-btn').click(function() {
+                // Toggle the background color between white and black
+                $('body').toggleClass('bg-white bg-black');
+
+                // Change the button's color from red to green and vice versa
+                $(this).toggleClass('bg-red-500 hover:bg-red-700 bg-green-500 hover:bg-green-700');
+
+                // Change the button text from "Follow" to "Following" and vice versa
+                const isFollowing = $(this).text().trim() === 'Following';
+                $(this).text(isFollowing ? 'Follow' : 'Following');
+                //change the text color for maintext
+                $('.maintext').toggleClass('text-black text-white');
+            });
+        });
+    </script>
+
+</body>
+</html>

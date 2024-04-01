@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Sidebar Layout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="flex h-screen">
+
+    <!-- Sidebar -->
+    <div class="w-1/4 bg-green-900 text-white flex flex-col">
+      <!-- Sidebar content -->
+      <div class="px-4 py-6">
+        <!-- Title -->
+        <h2 class="font-bold text-xl mb-4">Voice & Tone</h2>
+        <!-- Content Types List -->
+        <div class="mb-8">
+          <h3 class="font-semibold text-lg mb-2">CONTENT TYPES</h3>
+          <ul class="space-y-2">
+            <li>Success Message</li>
+            <li>App Copy</li>
+            <li>Company Newsletter</li>
+            <!-- Add other items here -->
+          </ul>
+        </div>
+        <!-- Other Sidebar content -->
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="w-3/4 bg-white p-8">
+      <!-- Success Message Section -->
+      <div class="flex flex-col">
+        <h3 class="font-bold text-2xl mb-4">SUCCESS MESSAGE</h3>
+        <div class="mb-6 p-4 bg-green-200 text-green-800">
+          <p>Finished this week's campaign! Now I can enjoy the weekend.</p>
+        </div>
+        <!-- Tips or other content here -->
+      </div>
+      <!-- Other Main Content -->
+    </div>
+
+  </div>
+
+</body>
+</html>

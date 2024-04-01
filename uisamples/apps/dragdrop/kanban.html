@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </head>
+  <body class="bg-gray-100 px-4 py-6">
+    <div class="container mx-auto">
+      <div class="flex justify-end mb-4">
+        <button
+          id="createTaskButton"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+        >
+          Create New Task
+        </button>
+        <button
+          id="createSectionButton"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Create New Section
+        </button>
+      </div>
+      <div id="kanban" class="grid grid-cols-3 gap-4"></div>
+    </div>
+    <div
+      id="taskModal"
+      class="fixed inset-0 flex items-center justify-center z-50"
+      style="display: none"
+    >
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4">Create New Task</h2>
+        <form id="taskForm">
+          <div class="mb-4">
+            <label for="taskTitle" class="block mb-2">Task Title:</label>
+            <input
+              type="text"
+              id="taskTitle"
+              class="w-full px-3 py-2 border rounded-md"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="startDate" class="block mb-2">Start Date:</label>
+            <input
+              type="text"
+              id="startDate"
+              class="w-full px-3 py-2 border rounded-md"
+              placeholder="Select start date"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="endDate" class="block mb-2">End Date:</label>
+            <input
+              type="text"
+              id="endDate"
+              class="w-full px-3 py-2 border rounded-md"
+              placeholder="Select end date"
+              required
+            />
+          </div>
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Create Task
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        var kanban = JSON.parse(localStorage.getItem("kanban")) || [
+          {
+            id: "section1",
+            title: "Marketing",
+            tasks: [
+              {
+                id: "task1",
+                title: "Task 1",
+                startDate: "2023-06-01",
+                endDate: "2023-06-05",
+                color: getRandomColor(),
+              },
+            ],
+          },
+          { id: "section2", title: "Sales", tasks: [] },
+          {
+            id: "section3",
+            title: "Projects",
+            tasks: [
+              {
+                id: "task2",
+                title: "Task 2",
+                startDate: "2023-06-10",
+                endDate: "2023-06-15",
+                color: getRandomColor(),
+              },
+            ],
+          },
+        ];
+        renderKanban();
+        $("#createTaskButton").click(function () {
+          openTaskModal();
+        });
+        $("#taskForm").submit(function (event) {
+          event.preventDefault();
+          var taskTitle = $("#taskTitle").val();
+          var startDate = $("#startDate").val();
+          var endDate = $("#endDate").val();
+          if (taskTitle && startDate && endDate) {
+            var task = {
+              id: "task" + Date.now(),
+              title: taskTitle,
+              startDate: startDate,
+              endDate: endDate,
+              color: getRandomColor(),
+            };
+            kanban[0].tasks.push(task);
+            saveKanban();
+            renderKanban();
+            closeTaskModal();
+          }
+        });
+        $("#createSectionButton").click(function () {
+          var sectionTitle = prompt("Enter section title:");
+          if (sectionTitle) {
+            var section = {
+              id: "section" + Date.now(),
+              title: sectionTitle,
+              tasks: [],
+            };
+            kanban.push(section);
+            saveKanban();
+            renderKanban();
+          }
+        });
+        function renderKanban() {
+          var kanbanElement = $("#kanban");
+          kanbanElement.empty();
+          kanban.forEach(function (section) {
+            var sectionElement = $(
+              '<div class="bg-white shadow-md rounded-lg p-4"></div>'
+            );
+            var sectionTitle = $(
+              '<h2 class="text-xl font-bold mb-4"></h2>'
+            ).text(section.title);
+            var tasksElement = $('<div class="space-y-2"></div>');
+            section.tasks.forEach(function (task) {
+              var taskElement = $(
+                '<div class="bg-' +
+                  task.color +
+                  '-500 text-white p-2 rounded-md cursor-move" draggable="true"></div>'
+              );
+              var taskTitle = $("<div></div>").text(task.title);
+              var taskDates = $('<div class="text-sm"></div>').text(
+                task.startDate + " - " + task.endDate
+              );
+              taskElement.append(taskTitle, taskDates);
+              taskElement.on("dragstart", function (event) {
+                event.originalEvent.dataTransfer.setData("text/plain", task.id);
+              });
+              tasksElement.append(taskElement);
+            });
+            sectionElement.append(sectionTitle, tasksElement);
+            sectionElement.on("dragover", function (event) {
+              event.preventDefault();
+            });
+            sectionElement.on("drop", function (event) {
+              event.preventDefault();
+              var taskId = event.originalEvent.dataTransfer.getData("text");
+              var task = findTask(taskId);
+              if (task) {
+                removeTask(taskId);
+                section.tasks.push(task);
+                saveKanban();
+                renderKanban();
+              }
+            });
+            kanbanElement.append(sectionElement);
+          });
+        }
+        function findTask(taskId) {
+          for (var i = 0; i < kanban.length; i++) {
+            var section = kanban[i];
+            for (var j = 0; j < section.tasks.length; j++) {
+              var task = section.tasks[j];
+              if (task.id === taskId) {
+                return task;
+              }
+            }
+          }
+          return null;
+        }
+        function removeTask(taskId) {
+          for (var i = 0; i < kanban.length; i++) {
+            var section = kanban[i];
+            for (var j = 0; j < section.tasks.length; j++) {
+              var task = section.tasks[j];
+              if (task.id === taskId) {
+                section.tasks.splice(j, 1);
+                return;
+              }
+            }
+          }
+        }
+        function saveKanban() {
+          localStorage.setItem("kanban", JSON.stringify(kanban));
+        }
+        function getRandomColor() {
+          var colors = [
+            "red",
+            "blue",
+            "green",
+            "yellow",
+            "indigo",
+            "purple",
+            "pink",
+          ];
+          var randomIndex = Math.floor(Math.random() * colors.length);
+          return colors[randomIndex];
+        }
+        function openTaskModal() {
+          $("#taskModal").fadeIn();
+        }
+        function closeTaskModal() {
+          $("#taskModal").fadeOut();
+          $("#taskForm")[0].reset();
+        }
+        flatpickr("#startDate", { dateFormat: "Y-m-d", minDate: "today" });
+        flatpickr("#endDate", { dateFormat: "Y-m-d", minDate: "today" });
+      });
+    </script>
+  </body>
+</html>

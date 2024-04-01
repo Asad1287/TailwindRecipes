@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Off-canvas Sidebar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* The sidebar styling */
+        .off-canvas-sidebar {
+            width: 300px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .off-canvas-sidebar.open {
+            transform: translateX(0);
+        }
+
+        /* The rest of the content when sidebar is open */
+        .content-overlay {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease-in-out;
+        }
+
+        .content-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="font-sans leading-normal tracking-normal"> <!-- Button to toggle the sidebar --> <button
+        id="openSidebarMenu" class="p-3 bg-blue-500 text-white"> Open Sidebar </button> <!-- The sidebar -->
+    <div id="sidebar" class="off-canvas-sidebar fixed inset-y-0 left-0 bg-white overflow-hidden shadow-xl z-50 p-4">
+        <h3 class="font-bold text-lg mb-4">Recent Activity</h3> <button id="closeSidebarMenu"
+            class="p-2 text-black absolute top-0 right-0">×</button>
+
+        <div class="flex flex-col space-y-4">
+            <!-- User activity item -->
+            <div class="flex items-center space-x-4">
+                <img src="avatar1.jpg" alt="User Avatar" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-semibold">John Doe</p>
+                    <p class="text-sm text-gray-600">Completed a task</p>
+                </div>
+            </div>
+
+            <!-- User activity item -->
+            <div class="flex items-center space-x-4">
+                <img src="avatar2.jpg" alt="User Avatar" class="w-10 h-10 rounded-full">
+                <div>
+                    <p class="font-semibold">Jane Smith</p>
+                    <p class="text-sm text-gray-600">Submitted a report</p>
+                </div>
+            </div>
+
+            <!-- Add more user activity items as needed -->
+        </div>
+
+    </div> <!-- Content overlay -->
+    <div id="contentOverlay" class="content-overlay fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+    <script> $(document).ready(function () { $('#openSidebarMenu').click(function () { $('#sidebar').addClass('open'); $('#contentOverlay').addClass('active'); }); $('#closeSidebarMenu, #contentOverlay').click(function () { $('#sidebar').removeClass('open'); $('#contentOverlay').removeClass('active'); }); }); </script>
+</body>
+
+</html>

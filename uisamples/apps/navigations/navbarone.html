@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPD Page</title>
+    <!-- Include Tailwind CSS from CDN for simplicity -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header class="bg-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Top bar -->
+        <div class="flex justify-between items-center py-2">
+          <!-- Logo and title -->
+          <div class="flex items-center">
+            <div class="bg-red-500 text-white p-2">SPD</div>
+            <span class="ml-3 text-xl font-semibold"
+              >The Society of Publication Designers</span
+            >
+          </div>
+          <!-- Member Sign In -->
+          <div class="flex items-center space-x-4">
+            <span class="text-sm">Member Sign In</span>
+            <a href="#" class="text-blue-600 text-sm hover:underline"
+              >Forgot your password?</a
+            >
+            <a href="#" class="text-blue-600 text-sm hover:underline"
+              >Register</a
+            >
+            <a href="#" class="text-blue-600 text-sm hover:underline"
+              >RSS Feeds</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <!-- Navigation Links -->
+            <div class="flex items-center space-x-4">
+              <a
+                href="#"
+                class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Join</a
+              >
+              <a
+                href="#"
+                class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Blogs</a
+              >
+              <a
+                href="#"
+                class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Profiles</a
+              >
+              <a
+                href="#"
+                class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Galleries</a
+              >
+         
+              <div class="relative inline-block text-left">
+                <button
+                  type="button"
+                  class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none"
+                  id="events-menu"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                >
+                  Events
+                </button>
+                <div
+                  class="origin-top-right absolute left-3 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="events-menu"
+                >
+                  <div class="py-1" role="none">
+                    <a
+                      href="#"
+                      class="text-gray-800 hover:text-gray-600 block px-4 py-2 text-sm hover:bg-gray-300"
+                      role="menuitem"
+                      >Event-1</a
+                    >
+                    <a
+                      href="#"
+                      class="text-gray-800 hover:text-gray-600 block px-4 py-2 text-sm hover:bg-gray-300"
+                      role="menuitem"
+                      >Event-2</a
+                    >
+                    <a
+                      href="#"
+                      class="text-gray-800 hover:text-gray-600 block px-4 py-2 text-sm hover:bg-gray-300"
+                      role="menuitem"
+                      >Event-3</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <a
+                href="#"
+                class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Job Board</a
+              >
+              <a
+                href="#"
+                class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                >Students</a
+              >
+            </div>
+            <!-- Search Box -->
+            <div class="flex items-center">
+              <input
+                type="search"
+                class="rounded-l-md pl-4 pr-3 py-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Search..."
+              />
+              <button
+                class="bg-blue-500 text-white px-4 py-2 border-l-0 border border-gray-300 rounded-r-md hover:bg-blue-600"
+              >
+                GO
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-8">
+      <!-- Content goes here -->
+    </main>
+
+    <!-- Include Tailwind CSS via script for interactivity (e.g., dropdowns) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Initialize Tailwind CSS features
+      tailwind.config = {
+        // Custom configurations go here
+      };
+
+      // Hide and show submenu for events
+      $(document).ready(function () {
+        $("#events-menu").click(function () {
+          $(".origin-top-right").toggle();
+        });
+      });
+    </script>
+  </body>
+</html>
+

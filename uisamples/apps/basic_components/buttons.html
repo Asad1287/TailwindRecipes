@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alert Messages</title>
+<!-- Add Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+<!-- Add jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .ripple {
+  position: relative;
+  overflow: hidden;
+  
+}
+.ripple:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: translate(-50%, -50%) scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+.ripple:active:after {
+  transform: translate(-50%, -50%) scale(0, 0);
+  opacity: .2;
+  transition: 0s;
+}
+</style>
+</head>
+<body>
+<!-- Toggle Button Status -->
+<button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ripple">Single toggle</button>
+
+
+<div class="flex flex-col">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold mb-2 py-2 px-4 rounded ripple " type="button">Button</button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold mb-2 py-2 px-4 rounded ripple" type="button">Button</button>
+</div>
+<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked="">
+    <label class="btn btn-primary material-shadow-none" for="btncheck1">Checkbox 1</label>
+    
+    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+    <label class="btn btn-primary material-shadow-none" for="btncheck2">Checkbox 2</label>
+    
+    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+    <label class="btn btn-primary material-shadow-none" for="btncheck3">Checkbox 3</label>
+</div>
+
+<!-- Radio Buttons -->
+<div class="flex space-x-2" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="sr-only" id="btncheck1" autocomplete="off" checked>
+    <label class="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" for="btncheck1">Checkbox 1</label>
+    
+    <input type="checkbox" class="sr-only" id="btncheck2" autocomplete="off">
+    <label class="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" for="btncheck2">Checkbox 2</label>
+    
+    <input type="checkbox" class="sr-only" id="btncheck3" autocomplete="off">
+    <label class="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" for="btncheck3">Checkbox 3</label>
+</div>
+
+<!-- Radio Buttons -->
+<div class="flex space-x-2" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="sr-only" name="btnradio" id="btnradio1" autocomplete="off" checked>
+    <label class="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" for="btnradio1">Radio 1</label>
+
+    <input type="radio" class="sr-only" name="btnradio" id="btnradio2" autocomplete="off">
+    <label class="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" for="btnradio2">Radio 2</label>
+
+    <input type="radio" class="sr-only" name="btnradio" id="btnradio3" autocomplete="off">
+    <label class="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" for="btnradio3">Radio 3</label>
+</div>
+
+<div class="flex p-1 bg-gray-200 rounded-lg" role="group" aria-label="Basic checkbox toggle button group">
+  <!-- Checkbox 1 -->
+  <input type="checkbox" class="hidden" id="btncheck1" autocomplete="off" checked>
+  <label for="btncheck1" class="cursor-pointer text-white bg-blue-500 border border-r-0 border-blue-600 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Checkbox 1</label>
+
+  <!-- Checkbox 2 -->
+  <input type="checkbox" class="hidden" id="btncheck2" autocomplete="off">
+  <label for="btncheck2" class="cursor-pointer text-white bg-blue-500 border border-r-0 border-blue-600 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Checkbox 2</label>
+
+  <!-- Checkbox 3 -->
+  <input type="checkbox" class="hidden" id="btncheck3" autocomplete="off">
+  <label for="btncheck3" class="cursor-pointer text-white bg-blue-500 border border-blue-600 rounded-r-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Checkbox 3</label>
+</div>
+
+<div class="flex p-1 bg-gray-200 rounded-lg mt-2" role="group" aria-label="Basic radio toggle button group">
+  <!-- Radio 1 -->
+  <input type="radio" class="hidden" name="btnradio" id="btnradio1" autocomplete="off" checked>
+  <label for="btnradio1" class="cursor-pointer text-blue-500 bg-white border border-r-0 border-blue-500 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Radio 1</label>
+
+  <!-- Radio 2 -->
+  <input type="radio" class="hidden" name="btnradio" id="btnradio2" autocomplete="off">
+  <label for="btnradio2" class="cursor-pointer text-blue-500 bg-white border border-r-0 border-blue-500 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Radio 2</label>
+
+  <!-- Radio 3 -->
+  <input type="radio" class="hidden" name="btnradio" id="btnradio3" autocomplete="off">
+  <label for="btnradio3" class="cursor-pointer text-blue-500 bg-white border border-blue-500 rounded-r-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Radio 3</label>
+</div>
+
+<div class="p-4">
+  <!-- Default focus ring -->
+  <button id="defaultFocus" class="px-4 py-2 m-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+    Focus ring
+  </button>
+
+  <!-- Custom focus ring -->
+  <button id="customFocus" class="px-4 py-2 m-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+    Custom focus ring
+  </button>
+
+  <!-- Blurry offset focus ring -->
+  <button id="blurryFocus" class="px-4 py-2 m-2 border border-gray-300 rounded-md focus:outline-none blurry-focus-ring">
+    Blurry offset focus ring
+  </button>
+</div>
+
+<script>
+  // jQuery to handle focus state
+  $(document).ready(function() {
+    // Handle focus for the default focus ring button
+    $('#defaultFocus').focus(function() {
+      // Custom actions can be performed here when the button gains focus
+    });
+
+    // Handle focus for the custom focus ring button
+    $('#customFocus').focus(function() {
+      // Custom actions can be performed here when the button gains focus
+    });
+
+    // Handle focus for the blurry focus ring button
+    $('#blurryFocus').focus(function() {
+      // Custom actions can be performed here when the button gains focus
+    });
+  });
+</script>
+
+<script>
+  // Function to remove a specific class from all elements in a list
+  function removeAllClass(elements, className) {
+    elements.forEach(element => {
+      element.classList.remove(className);
+    });
+  }
+
+  // Toggle class for checkbox labels
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      let label = document.querySelector('label[for="' + this.id + '"]');
+      if(this.checked) {
+        label.classList.add('bg-blue-700');
+        label.classList.remove('bg-blue-500');
+      } else {
+        label.classList.remove('bg-blue-700');
+        label.classList.add('bg-blue-500');
+      }
+    });
+  });
+
+  // Toggle class for radio labels
+  const radios = document.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', function() {
+      let radioLabels = document.querySelectorAll('div[aria-label="Basic radio toggle button group"] label');
+      removeAllClass(radioLabels, 'bg-blue-500');
+      removeAllClass(radioLabels, 'text-white');
+      radioLabels.forEach(label => {
+        label.classList.add('text-blue-500');
+        label.classList.add('bg-white');
+      });
+      let label = document.querySelector('label[for="' + this.id + '"]');
+      label.classList.add('bg-blue-500');
+      label.classList.add('text-white');
+      label.classList.remove('text-blue-500');
+      label.classList.remove('bg-white');
+    });
+  });
+</script>
+
+</body>
+</html>

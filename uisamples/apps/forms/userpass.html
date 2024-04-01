@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Form with jQuery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="max-w-md mx-auto bg-gray-400 p-8 rounded-md shadow-md">
+        <div class="mb-4">
+            <label for="username" class="text-sm font-medium text-gray-700">Username:</label>
+            <input id="username" type="text" class="mt-1 w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Choose a username">
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Choose a password:</label>
+            <input id="password" type="password" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Choose a password">
+            <div id="strength-meter" class="h-2 w-full rounded-full mt-2 overflow-hidden">
+                <div id="strength-meter-fill" class="h-full rounded-full bg-red-500"></div> 
+            </div>
+            <p id="strength-text" class="text-sm mt-1 text-gray-600">Password strength: <span id="strength-text-value">Weak</span></p>
+        </div>
+
+        <button id="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md">Submit</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#password').on('input', function() {
+            var password = $(this).val();
+            var strength = 0;
+            var strengthText = '';
+            if (password.length > 7) {
+                strength += 1;
+            }
+            if (password.match(/[a-z]/)) {
+                strength += 1;
+            }
+            if (password.match(/[A-Z]/)) {
+                strength += 1;
+            }
+            if (password.match(/[0-9]/)) {
+                strength += 1;
+            }
+            if (password.match(/[^a-zA-Z0-9]/)) {
+                strength += 1;
+            }
+            if (strength === 0) {
+                strengthText = 'Weak';
+            } else if (strength === 1) {
+                strengthText = 'Weak';
+            } else if (strength === 2) {
+                strengthText = 'Moderate';
+            } else if (strength === 3) {
+                strengthText = 'Strong';
+            } else {
+                strengthText = 'Very Strong';
+            }
+            $('#strength-meter-fill').css('width', (strength * 20) + '%');
+            $('#strength-text-value').text(strengthText);
+        });
+    });
+
+    $('#submit').on('click', function() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if (username.length === 0 || password.length === 0) {
+            alert('Please fill in both fields');
+        } else {
+            alert('Form submitted');
+        }
+    });
+
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div class="flex">
+        <nav class="bg-gray-200 w-64 p-4">
+            <ul>
+                <li><a href="#" class="block py-2 hover:bg-gray-300">Home</a></li>
+                <li><a href="#" class="block py-2 hover:bg-gray-300">Assets</a></li>
+                <li><a href="#" class="block py-2 hover:bg-gray-300">Login</a></li>
+                <li><a href="#" class="block py-2 hover:bg-gray-300">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="flex-1 p-4">
+            <h1 class="text-2xl font-bold mb-4">Asset Management</h1>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Create Asset</h2>
+                    <form id="assetForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="assetName">Asset Name</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="assetName" type="text" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="assetNum">Asset Number</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="assetNum" type="text" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="stockPrice">Stock Price</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stockPrice" type="number" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="depreciation">Depreciation</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="depreciation" type="number" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="location">Location</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="location" type="text" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2">Attach Details</label>
+                            <button type="button" id="openUploadModal" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Attach Files</button>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Submit</button>
+                    </form>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold mb-4">Asset Table</h2>
+                    <table id="assetTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Asset Name</th>
+                                <th>Asset Number</th>
+                                <th>Stock Price</th>
+                                <th>Depreciation</th>
+                                <th>Location</th>
+                                <th>Attached Files</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="uploadModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <h2 class="text-xl font-bold mb-4">Attach Files</h2>
+                    <form id="uploadForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="files">Select Files</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="files" type="file" multiple>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var assetTable = $('#assetTable').DataTable();
+
+            // Load assets from localStorage
+            var assets = JSON.parse(localStorage.getItem('assets')) || [];
+            assets.forEach(function(asset) {
+                assetTable.row.add([
+                    asset.name,
+                    asset.assetNum,
+                    asset.stockPrice,
+                    asset.depreciation,
+                    asset.location,
+                    asset.attachedFiles.join(', ')
+                ]).draw();
+            });
+
+            $('#openUploadModal').on('click', function() {
+                $('#uploadModal').removeClass('hidden');
+            });
+
+            $('#uploadForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var files = $('#files')[0].files;
+                var filePaths = Array.from(files).map(function(file) {
+                    return file.name;
+                });
+
+                var currentAsset = {
+                    attachedFiles: filePaths
+                };
+
+                localStorage.setItem('currentAsset', JSON.stringify(currentAsset));
+
+                $('#uploadModal').addClass('hidden');
+                $('#uploadForm')[0].reset();
+            });
+
+            $('#assetForm').on('submit', function(e) {
+                e.preventDefault();
+
+                var name = $('#assetName').val();
+                var assetNum = $('#assetNum').val();
+                var stockPrice = $('#stockPrice').val();
+                var depreciation = $('#depreciation').val();
+                var location = $('#location').val();
+                var currentAsset = JSON.parse(localStorage.getItem('currentAsset')) || {};
+
+                var asset = {
+                    name: name,
+                    assetNum: assetNum,
+                    stockPrice: stockPrice,
+                    depreciation: depreciation,
+                    location: location,
+                    attachedFiles: currentAsset.attachedFiles || []
+                };
+
+                assets.push(asset);
+                localStorage.setItem('assets', JSON.stringify(assets));
+                localStorage.removeItem('currentAsset');
+
+                assetTable.row.add([
+                    asset.name,
+                    asset.assetNum,
+                    asset.stockPrice,
+                    asset.depreciation,
+                    asset.location,
+                    asset.attachedFiles.join(', ')
+                ]).draw();
+
+                $('#assetForm')[0].reset();
+            });
+        });
+    </script>
+</body>
+</html>

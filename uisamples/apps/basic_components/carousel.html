@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newspaper Style Swiper Carousel</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #eee; /* Add background color for body */
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Center the carousel on the page */
+    .swiper-container {
+      max-width: 50%; /* Half the page width */
+      height: 30vh; /* 30 percent of the viewport height */
+      margin: auto; /* Center horizontally */
+      position: relative; /* Relative positioning */
+      top: 50%; /* Push down by half of the remaining vertical space */
+      transform: translateY(-50%); /* Pull up by half of its own height */
+      border-radius: 8px; /* Optional: for rounded corners */
+      overflow: hidden; /* Keep everything neat */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional: add shadow for some depth */
+    }
+
+    .swiper-slide {
+      text-align: center;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-shadow: none; /* Remove the individual slide shadow */
+    }
+
+    .carousel-card {
+      max-width: 600px;
+      width: 100%;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .headline {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .summary {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      color: #000;
+      width: auto;
+      height: auto;
+      padding: 0;
+      background: none;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .swiper-button-prev {
+      left: 10px;
+    }
+
+    .swiper-button-next {
+      right: 10px;
+    }
+
+    .swiper-button-prev:after, .swiper-button-next:after {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #000;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+      padding: 20px;
+    }
+
+    .news-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-item h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .news-item p {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>News Website</h1>
+  </header>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="carousel-card">
+          <div class="headline">Headline for First News Item</div>
+          <div class="summary">This is a short summary for the first news item...</div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="carousel-card">
+          <div class="headline">Headline for Second News Item</div>
+          <div class="summary">This is a short summary for the second news item...</div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="carousel-card">
+          <div class="headline">Third Piece of News Headline</div>
+          <div class="summary">Details about the third news item can be found here...</div>
+        </div>
+      </div>
+      <!-- More slides as needed -->
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev">&#10094;</div>
+    <div class="swiper-button-next">&#10095;</div>
+  </div>
+
+  <div class="news-grid">
+    <!-- News Item 1 -->
+    <div class="news-item">
+      <h3>News Headline 1</h3>
+      <p>A brief summary or excerpt of the news article goes here...</p>
+    </div>
+    <!-- News Item 2 -->
+    <div class="news-item">
+      <h3>News Headline 2</h3>
+      <p>Another summary or excerpt of the news article...</p>
+    </div>
+    <!-- More news items as needed -->
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+</body>
+</html>

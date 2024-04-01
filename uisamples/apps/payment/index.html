@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Payment</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Checkout Payment</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Order Summary</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center mb-4">
+            <img src="product1.jpg" alt="Product 1" class="w-20 h-20 object-cover rounded-md mr-4">
+            <div>
+              <h3 class="text-lg font-semibold">Product 1</h3>
+              <p class="text-gray-500">Color: Blue, Size: Large</p>
+              <p class="text-gray-500">Quantity: 2</p>
+              <p class="font-semibold">$49.99 each</p>
+            </div>
+          </div>
+          <!-- Add more product items as needed -->
+          <div class="border-t border-gray-200 pt-4">
+            <div class="flex justify-between">
+              <p class="font-semibold">Subtotal:</p>
+              <p>$99.98</p>
+            </div>
+            <div class="flex justify-between">
+              <p class="font-semibold">Tax:</p>
+              <p>$8.99</p>
+            </div>
+            <div class="flex justify-between">
+              <p class="font-semibold">Shipping:</p>
+              <p>$5.99</p>
+            </div>
+            <div class="flex justify-between mt-4">
+              <p class="text-xl font-bold">Order Total:</p>
+              <p class="text-xl font-bold">$114.96</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Payment Information</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="mb-4">
+            <label for="paymentMethod" class="block font-semibold mb-1">Payment Method</label>
+            <select id="paymentMethod" class="w-full border border-gray-300 rounded-md px-4 py-2">
+              <option value="creditCard">Credit Card</option>
+              <option value="debitCard">Debit Card</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="cardNumber" class="block font-semibold mb-1">Card Number</label>
+            <input type="text" id="cardNumber" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="1234 5678 9012 3456">
+          </div>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="expiryDate" class="block font-semibold mb-1">Expiry Date</label>
+              <input type="text" id="expiryDate" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="MM/YY">
+            </div>
+            <div>
+              <label for="cvv" class="block font-semibold mb-1">CVV</label>
+              <input type="text" id="cvv" class="w-full border border-gray-300 rounded-md px-4 py-2" placeholder="123">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="billingAddress" class="block font-semibold mb-1">Billing Address</label>
+            <textarea id="billingAddress" class="w-full border border-gray-300 rounded-md px-4 py-2" rows="3" placeholder="Enter your billing address"></textarea>
+          </div>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" id="rememberMe" class="mr-2">
+            <label for="rememberMe">Remember me for future purchases</label>
+          </div>
+          <button class="bg-blue-500 text-white rounded-md px-6 py-3 font-semibold">Pay Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8">
+      <h2 class="text-2xl font-bold mb-4">Customer Reviews</h2>
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex items-center mb-4">
+          <img src="avatar1.jpg" alt="Avatar 1" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <p class="font-semibold">John Doe</p>
+            <p class="text-gray-500">Great product and smooth checkout process!</p>
+          </div>
+        </div>
+        <!-- Add more customer reviews as needed -->
+      </div>
+    </div>
+    <div class="mt-8 text-center">
+      <p class="text-gray-500">Secure Checkout Powered by <img src="verisign.png" alt="Verisign" class="inline-block h-6"></p>
+      <p class="text-gray-500">For any assistance, please contact us at <a href="mailto:support@example.com" class="text-blue-500">support@example.com</a> or call +1 (123) 456-7890.</p>
+    </div>
+  </div>
+</body>
+</html>

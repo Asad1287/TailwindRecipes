@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Dropdowns</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js" defer></script>
+</head>
+<body>
+
+<!-- Menu Content -->
+<div x-data="{ open: false }" class="relative">
+  <button @click="open = !open" class="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none">
+    Header
+  </button>
+  <div x-show="open" @click.away="open = false" class="absolute bg-white shadow-md rounded-md mt-2 py-2 w-48" x-cloak>
+    <div class="px-4 py-2 text-gray-700 border-b">
+      <h5 class="text-sm">Welcome Jessie!</h5>
+    </div>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Action</a>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Another action</a>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Something else here</a>
+    <div class="border-t"></div>
+    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Separated link</a>
+  </div>
+</div>
+
+<!-- Text Content -->
+<div x-data="{ open: false }" class="relative mt-5">
+  <button @click="open = !open" class="bg-green-500 text-white px-4 py-2 rounded-md focus:outline-none">
+    Text
+  </button>
+  <div x-show="open" @click.away="open = false" class="absolute bg-white shadow-md rounded-md mt-2 py-2 w-64 px-3" x-cloak>
+    <p class="text-gray-700">
+      Some example text that's free-flowing within the dropdown menu.
+    </p>
+    <p class="text-gray-700 mb-0">
+      And this is more example text.
+    </p>
+  </div>
+</div>
+
+<!-- Forms Content -->
+<div x-data="{ open: false }" class="relative mt-5">
+  <button @click="open = !open" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md focus:outline-none">
+    Forms
+  </button>
+  <div x-show="open" @click.away="open = false" class="absolute bg-white shadow-md rounded-md mt-2 py-4 px-4 w-64" x-cloak>
+    <form>
+      <div class="mb-4">
+        <label for="exampleDropdownFormEmail" class="block text-gray-700 text-sm font-bold mb-2">Email address</label>
+        <input type="email" id="exampleDropdownFormEmail" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="email@example.com">
+      </div>
+      <div class="mb-4">
+        <label for="exampleDropdownFormPassword" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+        <input type="password" id="exampleDropdownFormPassword" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Password">
+      </div>
+      <div class="mb-4">
+        <label for="rememberdropdownCheck" class="flex items-center">
+          <input type="checkbox" id="rememberdropdownCheck" class="form-checkbox h-4 w-4 text-blue-500">
+          <span class="ml-2 text-sm text-gray-700">Remember me</span>
+        </label>
+      </div>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign in</button>
+    </form>
+  </div>
+</div>
+
+<!-- Notifications -->
+<div class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg overflow-hidden z-10" aria-labelledby="page-header-notifications-dropdown">
+    <div class="bg-primary p-4 rounded-t-lg">
+        <div class="flex items-center justify-between">
+            <h6 class="text-white text-lg font-semibold m-0">Notifications</h6>
+            <span class="bg-gray-100 text-gray-600 text-sm font-medium px-2 py-1 rounded">4 New</span>
+        </div>
+    </div>
+
+    <div class="px-2 pt-2">
+        <ul class="flex border-b border-gray-200" id="notificationItemsTab" role="tablist">
+            <li class="flex-1">
+                <a class="block px-4 py-2 text-sm font-medium text-center text-gray-900 bg-gray-100 hover:bg-gray-200 focus:outline-none" data-tabs-target="#all-noti-tab" role="tab" aria-selected="true">
+                    All (4)
+                </a>
+            </li>
+            <li class="flex-1">
+                <a class="block px-4 py-2 text-sm font-medium text-center text-gray-500 hover:bg-gray-200 focus:outline-none" data-tabs-target="#messages-tab" role="tab" aria-selected="false">
+                    Messages
+                </a>
+            </li>
+            <li class="flex-1">
+                <a class="block px-4 py-2 text-sm font-medium text-center text-gray-500 hover:bg-gray-200 focus:outline-none" data-tabs-target="#alerts-tab" role="tab" aria-selected="false">
+                    Alerts
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+        <div id="all-noti-tab" role="tabpanel" aria-labelledby="all-noti-tab" class="py-2 ps-2">
+            <div class="max-h-80 overflow-y-auto pr-2">
+                <a href="#" class="block px-4 py-3 hover:bg-gray-100">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3">
+                            <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                                <i class="bx bx-badge-check text-lg"></i>
+                            </span>
+                        </div>
+                        <div class="flex-grow">
+                            <h6 class="text-gray-700 text-sm font-semibold mt-0 mb-1">Your <b>Elite</b> author Graphic Optimization <span class="text-gray-500">reward</span> is ready!</h6>
+                            <p class="text-gray-500 text-xs font-medium uppercase mb-0">
+                                <span><i class="mdi mdi-clock-outline"></i> Just 30 sec ago</span>
+                            </p>
+                        </div>
+                        <div class="pl-2 text-lg">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block px-4 py-3 hover:bg-gray-100">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3">
+                            <img src="assets/images/users/avatar-2.jpg" class="w-8 h-8 rounded-full" alt="user-pic">
+                        </div>
+                        <div class="flex-grow">
+                            <h6 class="text-gray-700 text-sm font-semibold mt-0 mb-1">Angela Bernier</h6>
+                            <div class="text-gray-500 text-sm">
+                                <p class="mb-1">Answered to your comment on the cash flow forecast's graph 🔔.</p>
+                            </div>
+                            <p class="text-gray-500 text-xs font-medium uppercase mb-0">
+                                <span><i class="mdi mdi-clock-outline"></i> 48 min ago</span>
+                            </p>
+                        </div>
+                        <div class="pl-2 text-lg">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block px-4 py-3 hover:bg-gray-100">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3">
+                            <span class="w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center">
+                                <i class="bx bx-message-square-dots text-lg"></i>
+                            </span>
+                        </div>
+                        <div class="flex-grow">
+                            <h6 class="text-gray-700 text-sm font-semibold mt-0 mb-1">You have received <b class="text-green-500">20</b> new messages in the conversation</h6>
+                            <p class="text-gray-500 text-xs font-medium uppercase mb-0">
+                                <span><i class="mdi mdi-clock-outline"></i> 2 hrs ago</span>
+                            </p>
+                        </div>
+                        <div class="pl-2 text-lg">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block px-4 py-3 hover:bg-gray-100">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 mr-3">
+                            <img src="assets/images/users/avatar-8.jpg" class="w-8 h-8 rounded-full" alt="user-pic">
+                        </div>
+                        <div class="flex-grow">
+                            <h6 class="text-gray-700 text-sm font-semibold mt-0 mb-1">Maureen Gibson</h6>
+                            <div class="text-gray-500 text-sm">
+                                <p class="mb-1">We talked about a project on linkedin.</p>
+                            </div>
+                            <p class="text-gray-500 text-xs font-medium uppercase mb-0">
+                                <span><i class="mdi mdi-clock-outline"></i> 4 hrs ago</span>
+                            </p>
+                        </div>
+                        <div class="pl-2 text-lg">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                        </div>
+                    </div>
+                </a>
+
+                <div class="text-center my-4">
+                    <button type="button" class="px-4 py-2 text-sm font-medium text-green-600 bg-green-50 rounded-lg hover:bg-green-100 focus:outline-none">
+                        View All Notifications <i class="ri-arrow-right-line align-middle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="messages-tab" role="tabpanel" aria-labelledby="messages-tab" class="hidden py-2 ps-2">
+            <div class="max-h-80 overflow-y-auto pr-2">
+                <!-- Messages tab content -->
+                <!-- ... -->
+            </div>
+        </div>
+
+        <div id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab" class="hidden p-4">
+            <div class="flex flex-col items-center">
+                <div class="w-1/4 pt-3">
+                    <img src="assets/images/svg/bell.svg" class="w-full" alt="user-pic">
+                </div>
+                <div class="text-center pb-5 mt-2">
+                    <h6 class="text-lg font-semibold">Hey! You have no any notifications</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
